@@ -203,7 +203,7 @@ const loadBooks = (bookArray) => {
       <p>${book.genre}</p>
       <p>${book.rating}</p>
       <img src=${book.image} art=${book.title}>
-      <button onclick="addToFaves('${book.title}')">Add to favories</button>
+
     </div>
       `;
   });
@@ -233,6 +233,24 @@ console.log(value);
     loadBooks(filteredList);
   }
 };
+
+// Stretch Goals #1 Function to filter and display books based on the fact they are from the 21st century.
+const century21 = () => {
+  // Get the selected value from the filter.
+
+  const filtered21CenturyList = books.filter((book) => book.year >= 2000);
+
+    loadBooks(filtered21CenturyList);
+  };
+  // Stretch Goals #2 to sort with an Alphabetical order.
+
+  const sortABC = () => {
+    const sortedABCList = books.sort((a, b) => a.title.localeCompare(b.title));
+    
+    loadBooks(sortedABCList); 
+  };
+
+
 
 // Apply the filter when the user changes the dropdown selection.
 filterDropdown.addEventListener("change", filterGenre);
