@@ -196,7 +196,7 @@ const loadBooks = (bookArray) => {
 
   bookArray.forEach((book) => {
     container.innerHTML += `
-    <div class="col-6 col-md-3 col-l-2">
+    <div class="col-12 col-md-4 col-l-2">
       <div class="card">
         <img class="card-img-top" src="${book.image}" alt="${book.title}">
         <div class="card-body">
