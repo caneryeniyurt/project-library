@@ -51,7 +51,7 @@ const books = [
     rating: 4,
     description:
       'Narrated by the teenage Holden Caulfield, the novel explores themes of alienation and the search for authenticity.',
-    image: './books-images/unknown.jpg'
+    image: './books-images/catcher.png'
   },
   {
     title: 'The Hobbit',
@@ -71,7 +71,7 @@ const books = [
     rating: 4.7,
     description:
       'The first book in the beloved Harry Potter series, it introduces readers to the magical world of Hogwarts and the young wizard Harry Potter.',
-    image: "./books-images/harry-potter-and-the-sorcerer'.jpg"
+    image: "./books-images/harry-potter-and-the-sorcerer.jpg"
   },
   {
     title: 'Moby-Dick',
@@ -101,7 +101,7 @@ const books = [
     rating: 4.3,
     description:
       "A psychological horror novel that tells the story of the Torrance family's terrifying experiences at the haunted Overlook Hotel.",
-    image: './books-images/unknown.jpg'
+    image: './books-images/shine.png'
   },
   {
     title: 'The Chronicles of Narnia: The Lion, the Witch and the Wardrobe',
@@ -121,7 +121,7 @@ const books = [
     rating: 3.8,
     description:
       'A gripping mystery thriller that follows Harvard symbologist Robert Langdon as he unravels the secrets of the Da Vinci Code.',
-    image: './books-images/unknown.jpg'
+    image: './books-images/davinci.png'
   },
   {
     title: 'The Alchemist',
@@ -131,7 +131,7 @@ const books = [
     rating: 4.25,
     description:
       'A philosophical novel that tells the story of Santiago, a shepherd boy, on his quest to discover his personal legend.',
-    image: './books-images/unknown.jpg'
+    image: './books-images/alch.png'
   },
   {
     title: 'The Hunger Games',
@@ -141,7 +141,7 @@ const books = [
     rating: 4.3,
     description:
       "In a dystopian future, Katniss Everdeen becomes a symbol of rebellion when she volunteers to take her sister's place in the brutal Hunger Games.",
-    image: './books-images/unknown.jpg'
+    image: './books-images/hunger.jpg'
   },
   {
     title: 'The Girl with the Dragon Tattoo',
@@ -151,7 +151,7 @@ const books = [
     rating: 4.1,
     description:
       'A gripping mystery novel featuring investigative journalist Mikael Blomkvist and the enigmatic hacker Lisbeth Salander.',
-    image: './books-images/unknown.jpg'
+    image: './books-images/dragon.png'
   },
   {
     title: 'The Road',
@@ -161,7 +161,7 @@ const books = [
     rating: 4,
     description:
       "Set in a post-apocalyptic world, it follows a father and son's harrowing journey to survive and find safety.",
-    image: './books-images/unknown.jpg'
+    image: './books-images/road.png'
   },
   {
     title: "The Hitchhiker's Guide to the Galaxy",
@@ -171,7 +171,7 @@ const books = [
     rating: 4.35,
     description:
       "A comedic science fiction series that follows the misadventures of Arthur Dent after Earth's destruction.",
-    image: './books-images/unknown.jpg'
+    image: './books-images/hitcheker.png'
   },
   {
     title: 'The Giver',
@@ -181,12 +181,12 @@ const books = [
     rating: 4.12,
     description:
       'A dystopian novel set in a seemingly perfect society where young Jonas discovers the dark truth beneath the surface.',
-    image: './books-images/unknown.jpg'
+    image: './books-images/giver.png'
   }
 ]
 
 // Get references to HTML elements using their IDs.
-const container = document.getElementById("container");
+const container = document.getElementById("bookinfo");
 const favorites = document.getElementById("favorites");
 const filterDropdown = document.getElementById("filterDropdown");
   
@@ -196,13 +196,18 @@ const loadBooks = (bookArray) => {
 
   bookArray.forEach((book) => {
     container.innerHTML += `
-    <div class="card">
-      <p>${book.title}</p>
-      <p>${book.author}</p>
-      <p>${book.year}</p>
-      <p>${book.genre}</p>
-      <p>${book.rating}</p>
-      <img src=${book.image} art=${book.title}>
+    <div class="col-6 col-md-3 col-l-2">
+      <div class="card">
+        <img class="card-img-top" src="${book.image}" alt="${book.title}">
+        <div class="card-body">
+          <h5 class="card-title">${book.title}</h5>
+          <p class="card-text">${book.author}</p>
+          <p class="card-text">${book.year}</p>
+          <p class="card-text">${book.genre}</p>
+          <p class="card-text">${book.description}</p>
+          <p class="card-text">${book.rating}</p>
+          </div>
+      </div>
 
     </div>
       `;
@@ -213,8 +218,12 @@ const loadBooks = (bookArray) => {
 /*  To sort the books of an array using the sort() method from newest to oldest and vice versa.
 The sort() method sorts the elements alphabetically or numerically. */
 
-const sortYear = () => {
+const sortOldYear = () => {
   const sortedList = books.sort((firstItem, secondItem) => firstItem.year - secondItem.year);
+  loadBooks(sortedList); 
+};
+const sortNewYear = () => {
+  const sortedList = books.reverse((firstItem, secondItem) => firstItem.year - secondItem.year);
   loadBooks(sortedList); 
 };
 
