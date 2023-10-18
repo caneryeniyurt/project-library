@@ -258,9 +258,14 @@ const century21 = () => {
     
     loadBooks(sortedABCList); 
   };
+  const sortZXY = () => {
+    const sortedABCList = books.reverse((a, b) => a.title.localeCompare(b.title));
+    
+    loadBooks(sortedABCList); 
+  };
 
 
-
+  sortZXY
 // Apply the filter when the user changes the dropdown selection.
 filterDropdown.addEventListener("change", filterGenre);
 // Load the initial list of dogs when the page loads.
